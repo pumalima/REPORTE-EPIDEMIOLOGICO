@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Registro EDAS – IRAS – Febriles</title>
+
+  <style>
+    :root{
+      --bg:#f1f3f5;              /* plomo claro */
+      --card:#ffffff;
+      --text:#1f2937;            /* plomo oscuro */
+      --muted:#6b7280;           /* gris */
+      --primary:#0b5394;         /* azul institucional */
+      --primary2:#08427a;
+      --border:#d1d5db;          /* plomo */
+      --head:#e5edf7;            /* azul suave */
+      --radius:14px;
+      --shadow:0 8px 22px rgba(0,0,0,.08);
+    }
+
+    *{ box-sizing:border-box; }
+    body{
+      margin:0;
+      font-family: Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    .container{
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 18px;
+    }
+
+    /* ===== Encabezado con logo ===== */
+    .top-header{
+      background: linear-gradient(135deg, var(--primary), #374151);
+      color: white;
+      padding: 18px;
+      border-radius: 16px;
+      margin-bottom: 18px;
+      box-shadow: var(--shadow);
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:14px;
+    }
+
+    .logo{
+      width:60px;
+      height:60px;
+      object-fit:contain;
+      background:white;
+      border-radius:12px;
+      padding:6px;
+      border: 1px solid rgba(255,255,255,.35);
+    }
+
+    .top-header h1{
+      margin:0;
+      font-size: clamp(18px, 3vw, 26px);
+      line-height:1.2;
+      color:white;
+    }
+
+    .top-header .subtitle{
+      margin:4px 0 0 0;
+      font-size:13px;
+      color:#e5e7eb;
+    }
+
+    @media (max-width: 600px){
+      .brand{
+        flex-direction:column;
+        text-align:center;
+      }
+      .logo{
+        width:70px;
+        height:70px;
+      }
+    }
+
+    /* ===== Cards ===== */
+    .card{
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 14px;
+      margin-bottom: 16px;
+    }
+
+    .card h2{
+      margin:0 0 10px 0;
+      color: var(--primary);
+      font-size: 18px;
+    }
+
+    .card h3{
+      margin: 14px 0 8px 0;
+      color: var(--primary);
+      font-size: 16px;
+    }
+
+    /* ===== Form general ===== */
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .field{
+      display:flex;
+      flex-direction:column;
+      gap:6px;
+    }
+
+    label{
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    input{
+      width:100%;
+      padding: 10px 10px;
+      border:1px solid var(--border);
+      border-radius: 10px;
+      outline:none;
+      font-size: 14px;
+      background: #fff;
+    }
+
+    input:focus{
+      border-color: rgba(11,83,148,.55);
+      box-shadow: 0 0 0 3px rgba(11,83,148,.12);
+    }
+
+    input[type="number"]{
+      text-align:center;
+    }
+
+    @media (max-width: 780px){
+      .grid{ grid-template-columns: 1fr; }
+    }
+
+    /* ===== Tablas ===== */
+    .table-wrap{
+      overflow-x:auto;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: white;
+    }
+
+    table{
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 620px; /* para scroll horizontal en celular */
+      background: white;
+    }
+
+    th, td{
+      border-bottom: 1px solid var(--border);
+      padding: 10px 8px;
+      text-align:center;
+      font-size: 14px;
+      white-space: nowrap;
+    }
+
+    th{
+      background: var(--head);
+      font-weight: 700;
+      color: #0b2f55;
+    }
+
+    td:first-child, th:first-child{
+      text-align:left;
+      padding-left: 12px;
+      min-width: 130px;
+    }
+
+    td input{
+      padding: 8px 8px;
+      border-radius: 10px;
+    }
+
+    /* ===== Botones ===== */
+    .actions{
+      display:flex;
+      gap:10px;
+      margin-top: 12px;
+      justify-content:flex-end;
+      flex-wrap:wrap;
+    }
+
+    .btn{
+      padding: 10px 14px;
+      font-size: 14px;
+      border:none;
+      border-radius: 12px;
+      cursor:pointer;
+      transition: .15s ease;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      user-select:none;
+    }
+
+    .btn.primary{
+      background: linear-gradient(135deg, var(--primary), #475569);
+      color: white;
+    }
+    .btn.primary:hover{
+      background: linear-gradient(135deg, var(--primary2), #374151);
+    }
+
+    .btn.ghost{
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text);
+    }
+    .btn.ghost:hover{
+      background: #f8fafc;
+    }
+
+    @media (max-width: 780px){
+      .actions{ justify-content: stretch; }
+      .btn{ width:100%; }
+      table{ min-width: 560px; }
+    }
+
+    /* Footer mini */
+    .footnote{
+      color: var(--muted);
+      font-size: 12px;
+      text-align:center;
+      margin: 10px 0 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+
+    <!-- ===== HEADER CON LOGO ===== -->
+    <header class="top-header">
+      <div class="brand">
+        <!-- CAMBIA logo.png por tu logo real (archivo o URL) -->
+        <img src="LOGOPUMA.png" alt="Logo" class="logo" />
+        <div>
+          <h1>📋 Registro Diario EDAS – IRAS – Febriles</h1>
+          <p class="subtitle">Sistema de vigilancia epidemiológica</p>
+        </div>
+      </div>
+    </header>
+
+    <!-- ===== DATOS GENERALES ===== -->
+    <section class="card">
+      <h2>Datos generales</h2>
+      <div class="grid">
+        <div class="field">
+          <label for="fecha">Fecha</label>
+          <input type="date" id="fecha" />
+        </div>
+        <div class="field">
+          <label for="semana">Semana</label>
+          <input type="number" id="semana" min="1" max="53" inputmode="numeric" />
+        </div>
+        <div class="field">
+          <label for="medico">Médico</label>
+          <input type="text" id="medico" placeholder="Nombre y apellido" />
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== EDAS ===== -->
+    <section class="card">
+      <h2>EDAS</h2>
+
+      <h3>EDA Acuosa</h3>
+      <div class="table-wrap">
+        <table class="tablaEDAS" aria-label="EDA Acuosa">
+          <tr><th>Edad</th><th>Casos</th><th>Hosp</th><th>Def</th></tr>
+          <tr><td>&lt;1 año</td><td><input type="number" min="0" inputmode="numeric"></td><td><input type="number" min="0" inputmode="numeric"></td><td><input type="number" min="0" inputmode="numeric"></td></tr>
+          <tr><td>1–4</td><td><input type="number" min="0" inputmode="numeric"></td><td><input type="number" min="0" inputmode="numeric"></td><td><input type="number" min="0" inputmode="numeric"></td></tr>
+          <tr><td>5–9</td><td><input type="number" min="0" inputmode="numeric"></td><td><input type="number" min="0" inputmode="numeric"></td><td><input type="number" min="0" inputmode="numeric"></td></tr>
+          <tr><td>10–19</td><td><input type="number" min="0" inputmode="numeric"></td><td><input type="number" min="0" inputmode="numeric"></td><td><input type="number" min="0" inputmode="numeric"></td></tr>
+          <tr><td>20–59</td><td><input type="number" min="0" inputmode="numeric"></td><td><input type="number" min="0" inputmode="numeric"></td><td><input type="number" min="0" inputmode="numeric"></td></tr>
+          <tr><td>60 a más</td><td><input type="number" min="0" inputmode="numeric"></td><td><input type="number" min="0" inputmode="numeric"></td><td><input type="number" min="0" inputmode="numeric"></td></tr>
+        </table>
+      </div>
+
+      <h3>EDA Disentérica</h3>
+      <div class="table-wrap">
+        <table class="tablaEDAS" aria-label="EDA Disentérica">
+          <tr><th>Edad</th><th>Casos</th><th>Hosp</th><th>Def</th></tr>
+          <tr><td>&lt;1 año</td><td><input type="number" min="0" inputmode="numeric"></td><td><input type="number" min="0" inputmode="numeric"></td><td><input type="number" min="0" inputmode="numeric"></td></tr>
+          <tr><td>1–4</td><td><input type="number" min="0" inputmode="numeric"></td><td><input type="number" min="0" inputmode="numeric"></td><td><input type="number" min="0" inputmode="numeric"></td></tr>
+          <tr><td>5–9</td><td><input type="number" min="0" inputmode="numeric"></td><td><input type="number" min="0" inputmode="numeric"></td><td><input type="number" min="0" inputmode="numeric"></td></tr>
+          <tr><td>10–19</td><td><input type="number" min="0" inputmode="numeric"></td><td><input type="number" min="0" inputmode="numeric"></td><td><input type="number" min="0" inputmode="numeric"></td></tr>
+          <tr><td>20–59</td><td><input type="number" min="0" inputmode="numeric"></td><td><input type="number" min="0" inputmode="numeric"></td><td><input type="number" min="0" inputmode="numeric"></td></tr>
+          <tr><td>60 a más</td><td><input type="number" min="0" inputmode="numeric"></td><td><input type="number" min="0" inputmode="numeric"></td><td><input type="number" min="0" inputmode="numeric"></td></tr>
+        </table>
+      </div>
+
+      <div class="actions">
+        <button class="btn primary" onclick="guardarEDAS()">💾 Guardar EDAS</button>
+      </div>
+    </section>
+
+    <!-- ===== IRAS ===== -->
+    <section class="card">
+      <h2>IRAS</h2>
+
+      <div class="table-wrap">
+        <table id="tablaIRAS" aria-label="IRAS">
+          <tr>
+            <th>Edad</th>
+            <th>IRAS</th>
+            <th>Neum No Grave</th>
+            <th>Neum Grave</th>
+            <th>Hosp</th>
+            <th>Def Intra</th>
+            <th>Def Extra</th>
+          </tr>
+          <tr><td>&lt;1 año</td><td><input type="number" min="0" inputmode="numeric"></td><td><input type="number" min="0" inputmode="numeric"></td><td><input type="number" min="0" inputmode="numeric"></td><td><input type="number" min="0" inputmode="numeric"></td><td><input type="number" min="0" inputmode="numeric"></td><td><input type="number" min="0" inputmode="numeric"></td></tr>
+          <tr><td>1–4</td><td><input type="number" min="0" inputmode="numeric"></td><td><input type="number" min="0" inputmode="numeric"></td><td><input type="number" min="0" inputmode="numeric"></td><td><input type="number" min="0" inputmode="numeric"></td><td><input type="number" min="0" inputmode="numeric"></td><td><input type="number" min="0" inputmode="numeric"></td></tr>
+          <tr><td>5–9</td><td><input type="number" min="0" inputmode="numeric"></td><td><input type="number" min="0" inputmode="numeric"></td><td><input type="number" min="0" inputmode="numeric"></td><td><input type="number" min="0" inputmode="numeric"></td><td><input type="number" min="0" inputmode="numeric"></td><td><input type="number" min="0" inputmode="numeric"></td></tr>
+          <tr><td>10–19</td><td><input type="number" min="0" inputmode="numeric"></td><td><input type="number" min="0" inputmode="numeric"></td><td><input type="number" min="0" inputmode="numeric"></td><td><input type="number" min="0" inputmode="numeric"></td><td><input type="number" min="0" inputmode="numeric"></td><td><input type="number" min="0" inputmode="numeric"></td></tr>
+          <tr><td>20–59</td><td><input type="number" min="0" inputmode="numeric"></td><td><input type="number" min="0" inputmode="numeric"></td><td><input type="number" min="0" inputmode="numeric"></td><td><input type="number" min="0" inputmode="numeric"></td><td><input type="number" min="0" inputmode="numeric"></td><td><input type="number" min="0" inputmode="numeric"></td></tr>
+          <tr><td>60 a más</td><td><input type="number" min="0" inputmode="numeric"></td><td><input type="number" min="0" inputmode="numeric"></td><td><input type="number" min="0" inputmode="numeric"></td><td><input type="number" min="0" inputmode="numeric"></td><td><input type="number" min="0" inputmode="numeric"></td><td><input type="number" min="0" inputmode="numeric"></td></tr>
+        </table>
+      </div>
+
+      <div class="actions">
+        <button class="btn primary" onclick="guardarIRAS()">💾 Guardar IRAS</button>
+      </div>
+    </section>
+
+    <!-- ===== FEBRILES ===== -->
+    <section class="card">
+      <h2>Febriles</h2>
+
+      <div class="table-wrap">
+        <table id="tablaFebriles" aria-label="Febriles">
+          <tr><th>Edad</th><th>Casos</th></tr>
+          <tr><td>&lt;1 año</td><td><input type="number" min="0" inputmode="numeric"></td></tr>
+          <tr><td>1–4</td><td><input type="number" min="0" inputmode="numeric"></td></tr>
+          <tr><td>5–9</td><td><input type="number" min="0" inputmode="numeric"></td></tr>
+          <tr><td>10–19</td><td><input type="number" min="0" inputmode="numeric"></td></tr>
+          <tr><td>20–59</td><td><input type="number" min="0" inputmode="numeric"></td></tr>
+          <tr><td>60 a más</td><td><input type="number" min="0" inputmode="numeric"></td></tr>
+        </table>
+      </div>
+
+      <div class="actions">
+        <button class="btn primary" onclick="guardarFebriles()">💾 Guardar Febriles</button>
+      </div>
+    </section>
+
+    <p class="footnote">© Registro EDAS – IRAS – Febriles PumaLimaTecnology 2026| </p>
+  </div>
+
+  <script>
+    const API_URL="https://script.google.com/macros/s/AKfycby7dCtrIHVuUjv7DmfD24PVPR4oAHR3zzANt901-LkjnzxPXveKJLh2tUOy4yD_OTQz/exec";
+
+    function base(){
+      const fecha = document.getElementById("fecha").value;
+      const semana = document.getElementById("semana").value;
+      const medico = document.getElementById("medico").value;
+      return [fecha, semana, medico];
+    }
+
+    function enviar(tipo, registros){
+      fetch(API_URL,{
+        method:"POST",
+        body: JSON.stringify({tipo, registros}),
+        headers: { "Content-Type": "text/plain;charset=utf-8" }
+      })
+      .then(()=>alert("✅ Guardado correctamente"))
+      .catch(()=>alert("❌ Error al guardar"));
+    }
+
+    function val(input){
+      const v = (input.value || "").trim();
+      return v === "" ? 0 : Number(v);
+    }
+
+    function guardarEDAS(){
+      let registros=[];
+      document.querySelectorAll(".tablaEDAS").forEach(tabla=>{
+        const titulo = tabla.getAttribute("aria-label") || "EDAS";
+        tabla.querySelectorAll("tr:not(:first-child)").forEach(tr=>{
+          const t = tr.querySelectorAll("td");
+          registros.push([
+            ...base(),
+            titulo,
+            t[0].innerText,
+            val(t[1].querySelector("input")),
+            val(t[2].querySelector("input")),
+            val(t[3].querySelector("input"))
+          ]);
+        });
+      });
+      enviar("EDAS", registros);
+    }
+
+    function guardarIRAS(){
+      let registros=[];
+      document.querySelectorAll("#tablaIRAS tr:not(:first-child)").forEach(tr=>{
+        const t = tr.querySelectorAll("td");
+        registros.push([
+          ...base(),
+          t[0].innerText,
+          val(t[1].querySelector("input")),
+          val(t[2].querySelector("input")),
+          val(t[3].querySelector("input")),
+          val(t[4].querySelector("input")),
+          val(t[5].querySelector("input")),
+          val(t[6].querySelector("input"))
+        ]);
+      });
+      enviar("IRAS", registros);
+    }
+
+    function guardarFebriles(){
+      let registros=[];
+      document.querySelectorAll("#tablaFebriles tr:not(:first-child)").forEach(tr=>{
+        const t = tr.querySelectorAll("td");
+        registros.push([
+          ...base(),
+          t[0].innerText,
+          val(t[1].querySelector("input"))
+        ]);
+      });
+      enviar("FEBRILES", registros);
+    }
+  </script>
+</body>
+</html>
