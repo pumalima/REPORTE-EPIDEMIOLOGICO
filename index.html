@@ -123,19 +123,23 @@
       color: var(--muted);
     }
 
+    /* ✅ INPUTS MÁS OSCUROS (MEJOR VISIBILIDAD) */
     input{
       width:100%;
       padding: 10px 10px;
-      border:1px solid var(--border);
+      border: 1.5px solid #9ca3af;   /* borde más oscuro */
       border-radius: 10px;
       outline:none;
       font-size: 14px;
-      background: #fff;
+      background: #f8fafc;           /* fondo gris suave */
+      color: #111827;
     }
 
+    /* ✅ Mejor enfoque */
     input:focus{
-      border-color: rgba(11,83,148,.55);
-      box-shadow: 0 0 0 3px rgba(11,83,148,.12);
+      border-color: #0b5394;
+      background: #ffffff;
+      box-shadow: 0 0 0 3px rgba(11,83,148,.18);
     }
 
     input[type="number"]{
@@ -186,7 +190,10 @@
       min-width: 130px;
     }
 
-    td input{
+    /* ✅ Inputs dentro de tablas (un poco más marcados) */
+    table td input{
+      background: #eef2f7;
+      border: 1.5px solid #94a3b8;
       padding: 8px 8px;
       border-radius: 10px;
     }
@@ -254,7 +261,6 @@
     <!-- ===== HEADER CON LOGO ===== -->
     <header class="top-header">
       <div class="brand">
-        <!-- CAMBIA LOGOPUMA.png por tu logo real (archivo o URL) -->
         <img src="LOGOPUMA.png" alt="Logo" class="logo" />
         <div>
           <h1>📋 Registro Diario EDAS – IRAS – Febriles</h1>
@@ -317,7 +323,7 @@
       </div>
     </section>
 
-    <!-- ===== IRAS (CORREGIDO COMO IMAGEN) ===== -->
+    <!-- ===== IRAS ===== -->
     <section class="card">
       <h2>IRAS</h2>
 
@@ -337,7 +343,6 @@
             <th>DEF. EXTRAHOSPITALARIAS</th>
           </tr>
 
-          <!-- Filas neumonías -->
           <tr class="fila-full">
             <td>&lt;02 m.</td>
             <td><input type="number" min="0" inputmode="numeric"></td>
@@ -415,7 +420,6 @@
             <td></td>
           </tr>
 
-          <!-- SOB/ASMA (solo 3 filas al final) -->
           <tr class="fila-sob">
             <td>&lt;02 a</td>
             <td colspan="6"></td>
@@ -439,7 +443,7 @@
       </div>
     </section>
 
-    <!-- ===== FEBRILES ===== -->
+    <!-- ===== FEBRILES (CON TOTAL EESS) ===== -->
     <section class="card">
       <h2>Febriles</h2>
 
@@ -452,6 +456,12 @@
           <tr><td>10–19</td><td><input type="number" min="0" inputmode="numeric"></td></tr>
           <tr><td>20–59</td><td><input type="number" min="0" inputmode="numeric"></td></tr>
           <tr><td>60 a más</td><td><input type="number" min="0" inputmode="numeric"></td></tr>
+
+          <!-- ✅ NUEVO REGISTRO -->
+          <tr>
+            <td><strong>Total de atenciones en EESS</strong></td>
+            <td><input type="number" min="0" inputmode="numeric"></td>
+          </tr>
         </table>
       </div>
 
@@ -507,36 +517,33 @@
       enviar("EDAS", registros);
     }
 
-    // ===== IRAS CORREGIDO (como imagen) =====
     function guardarIRAS(){
       let registros = [];
 
-      // Filas de neumonías (completas)
       document.querySelectorAll("#tablaIRAS tr.fila-full").forEach(tr=>{
         const t = tr.querySelectorAll("td");
         registros.push([
           ...base(),
           "NEUMONIAS",
-          t[0].innerText.trim(),                 // edad
-          val(t[1].querySelector("input")),      // IRAS
-          val(t[2].querySelector("input")),      // NEUM. NO GRAVE
-          val(t[3].querySelector("input")),      // NEUM. GRAVE
-          val(t[4].querySelector("input")),      // HOSP.
-          val(t[5].querySelector("input")),      // DEF. INTRA
-          val(t[6].querySelector("input")),      // DEF. EXTRA
-          0                                      // SOB/ASMA no va aquí
+          t[0].innerText.trim(),
+          val(t[1].querySelector("input")),
+          val(t[2].querySelector("input")),
+          val(t[3].querySelector("input")),
+          val(t[4].querySelector("input")),
+          val(t[5].querySelector("input")),
+          val(t[6].querySelector("input")),
+          0
         ]);
       });
 
-      // Filas SOB/ASMA (solo 3 edades)
       document.querySelectorAll("#tablaIRAS tr.fila-sob").forEach(tr=>{
         const t = tr.querySelectorAll("td");
         registros.push([
           ...base(),
           "SOB/ASMA",
-          t[0].innerText.trim(),                 // edad
-          0,0,0,0,0,0,                            // neumonías en 0
-          val(t[2].querySelector("input"))        // SOB/ASMA (t[1] es el colspan)
+          t[0].innerText.trim(),
+          0,0,0,0,0,0,
+          val(t[2].querySelector("input"))
         ]);
       });
 
