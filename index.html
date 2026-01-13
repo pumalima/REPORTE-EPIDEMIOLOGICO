@@ -17,6 +17,10 @@
       --head:#e5edf7;
       --radius:14px;
       --shadow:0 8px 22px rgba(0,0,0,.08);
+
+      --ok:#065f46;
+      --warn:#92400e;
+      --err:#7f1d1d;
     }
 
     *{ box-sizing:border-box; }
@@ -224,6 +228,108 @@
       text-align:center;
       margin: 10px 0 0;
     }
+
+    /* ===== MODAL GRANDE ===== */
+    .modal-bg{
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,.55);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      z-index:9999;
+      padding:18px;
+    }
+    .modal{
+      background:#fff;
+      border-radius:18px;
+      width:min(720px, 100%);
+      box-shadow:0 20px 55px rgba(0,0,0,.42);
+      overflow:hidden;
+      animation: pop .18s ease-out;
+      border: 1px solid rgba(17,24,39,.12);
+    }
+    @keyframes pop{
+      from{ transform:scale(.92); opacity:0; }
+      to{ transform:scale(1); opacity:1; }
+    }
+    .modal-head{
+      padding:18px 18px 10px;
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:14px;
+    }
+    .modal-title{
+      margin:0;
+      font-size:22px;
+      line-height:1.15;
+    }
+    .modal-close{
+      border:none;
+      background:transparent;
+      font-size:22px;
+      cursor:pointer;
+      padding:2px 6px;
+      border-radius:10px;
+      color:#111827;
+    }
+    .modal-close:hover{ background:#f3f4f6; }
+    .modal-body{
+      padding:0 18px 14px;
+      font-size:16px;
+      color:#111827;
+      white-space:pre-line;
+      max-height: 55vh;
+      overflow:auto;
+    }
+
+    .modal-bar{ height:10px; background:#111827; }
+    .modal.success .modal-bar{ background: var(--ok); }
+    .modal.warn .modal-bar{ background: var(--warn); }
+    .modal.error .modal-bar{ background: var(--err); }
+    .modal.success .modal-title{ color: var(--ok); }
+    .modal.warn .modal-title{ color: var(--warn); }
+    .modal.error .modal-title{ color: var(--err); }
+
+    .modal-footer{
+      padding: 0 18px 18px;
+      display:flex;
+      justify-content:flex-end;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+    .modal-btn{
+      border:none;
+      padding:10px 14px;
+      border-radius:12px;
+      cursor:pointer;
+      font-weight:700;
+      background:#111827;
+      color:white;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+    }
+    .modal-btn:hover{ opacity:.92; }
+    .modal-btn.secondary{
+      background:#e5e7eb;
+      color:#111827;
+      font-weight:700;
+    }
+    .modal-btn.warn{
+      background: linear-gradient(135deg, var(--warn), #b45309);
+      color: white;
+    }
+
+    .hint{
+      font-size: 12px;
+      color: #6b7280;
+      padding: 0 18px 18px;
+      margin-top:-6px;
+      display:none;
+    }
   </style>
 </head>
 
@@ -279,7 +385,6 @@
       <div class="table-wrap">
         <table class="tablaEDAS" aria-label="EDA Acuosa">
           <tr><th>Edad</th><th>Casos</th><th>Hosp</th><th>Def</th></tr>
-
           <tr><td>&lt; 1a</td><td><input type="number" min="0" inputmode="numeric"></td><td><input type="number" min="0" inputmode="numeric"></td><td><input type="number" min="0" inputmode="numeric"></td></tr>
           <tr><td>1–4 a</td><td><input type="number" min="0" inputmode="numeric"></td><td><input type="number" min="0" inputmode="numeric"></td><td><input type="number" min="0" inputmode="numeric"></td></tr>
           <tr><td>5–11 a</td><td><input type="number" min="0" inputmode="numeric"></td><td><input type="number" min="0" inputmode="numeric"></td><td><input type="number" min="0" inputmode="numeric"></td></tr>
@@ -287,7 +392,6 @@
           <tr><td>18–29 a</td><td><input type="number" min="0" inputmode="numeric"></td><td><input type="number" min="0" inputmode="numeric"></td><td><input type="number" min="0" inputmode="numeric"></td></tr>
           <tr><td>30–59 a</td><td><input type="number" min="0" inputmode="numeric"></td><td><input type="number" min="0" inputmode="numeric"></td><td><input type="number" min="0" inputmode="numeric"></td></tr>
           <tr><td>&gt;60 a</td><td><input type="number" min="0" inputmode="numeric"></td><td><input type="number" min="0" inputmode="numeric"></td><td><input type="number" min="0" inputmode="numeric"></td></tr>
-
         </table>
       </div>
 
@@ -295,7 +399,6 @@
       <div class="table-wrap">
         <table class="tablaEDAS" aria-label="EDA Disentérica">
           <tr><th>Edad</th><th>Casos</th><th>Hosp</th><th>Def</th></tr>
-
           <tr><td>&lt; 1a</td><td><input type="number" min="0" inputmode="numeric"></td><td><input type="number" min="0" inputmode="numeric"></td><td><input type="number" min="0" inputmode="numeric"></td></tr>
           <tr><td>1–4 a</td><td><input type="number" min="0" inputmode="numeric"></td><td><input type="number" min="0" inputmode="numeric"></td><td><input type="number" min="0" inputmode="numeric"></td></tr>
           <tr><td>5–11 a</td><td><input type="number" min="0" inputmode="numeric"></td><td><input type="number" min="0" inputmode="numeric"></td><td><input type="number" min="0" inputmode="numeric"></td></tr>
@@ -303,7 +406,6 @@
           <tr><td>18–29 a</td><td><input type="number" min="0" inputmode="numeric"></td><td><input type="number" min="0" inputmode="numeric"></td><td><input type="number" min="0" inputmode="numeric"></td></tr>
           <tr><td>30–59 a</td><td><input type="number" min="0" inputmode="numeric"></td><td><input type="number" min="0" inputmode="numeric"></td><td><input type="number" min="0" inputmode="numeric"></td></tr>
           <tr><td>&gt;60 a</td><td><input type="number" min="0" inputmode="numeric"></td><td><input type="number" min="0" inputmode="numeric"></td><td><input type="number" min="0" inputmode="numeric"></td></tr>
-
         </table>
       </div>
 
@@ -458,16 +560,107 @@
     <p class="footnote">© Registro EDAS – IRAS – Febriles PumaLimaTecnology 2026 |</p>
   </div>
 
-  <script>
-    const API_URL="https://script.google.com/macros/s/AKfycby7dCtrIHVuUjv7DmfD24PVPR4oAHR3zzANt901-LkjnzxPXveKJLh2tUOy4yD_OTQz/exec";
+  <!-- ===== MODAL ===== -->
+  <div id="modalBG" class="modal-bg" aria-live="polite" role="status">
+    <div id="modalBox" class="modal success">
+      <div class="modal-bar"></div>
+      <div class="modal-head">
+        <h2 id="modalTitle" class="modal-title">Mensaje</h2>
+        <button class="modal-close" onclick="hideModal()" aria-label="Cerrar">✕</button>
+      </div>
 
-    // ===== SEMANA EPIDEMIOLÓGICA SEGÚN TU CALENDARIO =====
-    // SE1 = primera semana COMPLETA que inicia el PRIMER LUNES del año
-    // Semana: LUNES a DOMINGO
+      <div id="modalMsg" class="modal-body">Texto</div>
+      <div class="hint" id="modalHint">Si el problema continúa, comuníquese con el administrador.</div>
+
+      <div class="modal-footer">
+        <button id="btnAdmin" class="modal-btn warn" onclick="contactarAdmin()" style="display:none;">
+          📞 Comunicar con el Administrador
+        </button>
+        <button class="modal-btn secondary" onclick="hideModal()">Cerrar</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // =========================================================
+    // ✅ API_URL NUEVO
+    // =========================================================
+    const API_URL="https://script.google.com/macros/s/AKfycbxDdc8pRGZD65QlfQ9TGzndANaFxzUlrpleMaqekqfexyZrTh2NmZUr8qvYLSj2eSdR/exec";
+
+    const ADMIN_PHONE_E164 = "51999999999"; // ej: 51987654321
+    const ADMIN_EMAIL = "admin@correo.com";
+
+    let modalTimer = null;
+    let lastDuplicateContext = null;
+
+    function showModal(type, title, msg, ms=3200, showAdmin=false){
+      const bg = document.getElementById("modalBG");
+      const box = document.getElementById("modalBox");
+
+      document.getElementById("modalTitle").textContent = title;
+      document.getElementById("modalMsg").textContent = msg;
+
+      document.getElementById("btnAdmin").style.display = showAdmin ? "inline-flex" : "none";
+      document.getElementById("modalHint").style.display = showAdmin ? "block" : "none";
+
+      box.className = "modal " + type;
+      bg.style.display = "flex";
+
+      if (modalTimer) clearTimeout(modalTimer);
+      modalTimer = setTimeout(()=> hideModal(), ms);
+    }
+
+    function hideModal(){
+      document.getElementById("modalBG").style.display = "none";
+    }
+
+    document.addEventListener("click", (e)=>{
+      const bg = document.getElementById("modalBG");
+      if(bg.style.display === "flex" && e.target === bg) hideModal();
+    });
+
+    document.addEventListener("keydown", (e)=>{
+      if(e.key === "Escape") hideModal();
+    });
+
+    function contactarAdmin(){
+      const fecha = document.getElementById("fecha").value || "(sin fecha)";
+      const semana = document.getElementById("semana").value || "(sin SE)";
+      const medico = document.getElementById("medico").value || "(sin médico)";
+      const tipo = (lastDuplicateContext && lastDuplicateContext.tipo) ? lastDuplicateContext.tipo : "(sin tipo)";
+
+      const mensaje =
+`ALERTA: Registro DUPLICADO detectado.
+Tipo: ${tipo}
+Fecha: ${fecha}
+SE: ${semana}
+Médico: ${medico}
+
+Por favor, revisar posible duplicidad en el sistema.`;
+
+      if (ADMIN_PHONE_E164 && ADMIN_PHONE_E164 !== "51999999999") {
+        const url = "https://wa.me/" + encodeURIComponent(ADMIN_PHONE_E164) + "?text=" + encodeURIComponent(mensaje);
+        window.open(url, "_blank");
+        return;
+      }
+
+      if (ADMIN_EMAIL && ADMIN_EMAIL !== "admin@correo.com") {
+        const subject = "ALERTA: Registro duplicado";
+        const mailto = "mailto:" + encodeURIComponent(ADMIN_EMAIL) +
+          "?subject=" + encodeURIComponent(subject) +
+          "&body=" + encodeURIComponent(mensaje);
+        window.location.href = mailto;
+        return;
+      }
+
+      showModal("error","❌ ADMIN NO CONFIGURADO","Configure ADMIN_PHONE_E164 o ADMIN_EMAIL en el código.", 4500, false);
+    }
+
+    // ===== SEMANA EPIDEMIOLÓGICA =====
     function firstMondayOfYear(year){
-      const d = new Date(year, 0, 1);  // 01/01 local
-      const day = d.getDay();          // 0=Dom ... 1=Lun ... 6=Sáb
-      const offset = (day === 1) ? 0 : (day === 0 ? 1 : (8 - day)); // días hasta lunes
+      const d = new Date(year, 0, 1);
+      const day = d.getDay();
+      const offset = (day === 1) ? 0 : (day === 0 ? 1 : (8 - day));
       d.setDate(d.getDate() + offset);
       d.setHours(0,0,0,0);
       return d;
@@ -476,17 +669,16 @@
     function startOfWeekMonday(date){
       const d = new Date(date);
       d.setHours(0,0,0,0);
-      const day = d.getDay(); // 0=Dom..6=Sáb
+      const day = d.getDay();
       const diffToMonday = (day === 0) ? -6 : (1 - day);
       d.setDate(d.getDate() + diffToMonday);
-      return d; // lunes
+      return d;
     }
 
     function epiWeekInfo(date){
       let year = date.getFullYear();
       let firstMon = firstMondayOfYear(year);
 
-      // Si cae antes del primer lunes, pertenece al año anterior
       while(date < firstMon){
         year = year - 1;
         firstMon = firstMondayOfYear(year);
@@ -523,8 +715,7 @@
         return;
       }
 
-      const d = new Date(fechaStr + "T00:00:00"); // fecha local estable
-
+      const d = new Date(fechaStr + "T00:00:00");
       const dias = ["Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado"];
       diaInput.value = dias[d.getDay()];
 
@@ -536,7 +727,6 @@
     document.addEventListener("DOMContentLoaded", () => {
       const fechaInput = document.getElementById("fecha");
 
-      // Hoy por defecto
       if (!fechaInput.value) {
         const hoy = new Date();
         const yyyy = hoy.getFullYear();
@@ -556,19 +746,57 @@
       return [fecha, semana, medico];
     }
 
-    function enviar(tipo, registros){
-      fetch(API_URL,{
-        method:"POST",
-        body: JSON.stringify({tipo, registros}),
-        headers: { "Content-Type": "text/plain;charset=utf-8" }
-      })
-      .then(()=>alert("✅ Guardado correctamente"))
-      .catch(()=>alert("❌ Error al guardar"));
-    }
-
     function val(input){
       const v = (input && (input.value || "").trim()) || "";
       return v === "" ? 0 : Number(v);
+    }
+
+    // ✅ ENVÍO ROBUSTO
+    function enviar(tipo, registros){
+      fetch(API_URL, {
+        method:"POST",
+        body: JSON.stringify({ tipo, registros }),
+        headers: { "Content-Type": "text/plain;charset=utf-8" }
+      })
+      .then(async (r) => {
+        const text = await r.text();
+        let res = null;
+
+        try { res = JSON.parse(text); }
+        catch {
+          showModal("error","❌ RESPUESTA NO VÁLIDA",
+            "El servidor no devolvió JSON.\n\nRespuesta:\n" + text,
+            12000,
+            true
+          );
+          return null;
+        }
+
+        return res;
+      })
+      .then((res) => {
+        if (!res) return;
+
+        if (res.status === "duplicate") {
+          lastDuplicateContext = { tipo };
+          showModal("warn","⚠️ REGISTRO DUPLICADO", res.message || "Duplicado detectado.", 9000, true);
+          return;
+        }
+
+        if (res.status === "ok") {
+          showModal("success","✅ REGISTRO GUARDADO", `${tipo} se guardó correctamente.`, 2800, false);
+          return;
+        }
+
+        showModal("error","❌ ERROR", res.message || "Error al guardar.", 6500, true);
+      })
+      .catch((err) => {
+        showModal("error","❌ FALLÓ CONEXIÓN",
+          "No se pudo conectar con el servidor.\n\nDetalle:\n" + (err?.message || err),
+          9000,
+          true
+        );
+      });
     }
 
     function guardarEDAS(){
