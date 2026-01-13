@@ -17,63 +17,26 @@
       --head:#e5edf7;
       --radius:14px;
       --shadow:0 8px 22px rgba(0,0,0,.08);
-
       --ok:#065f46;
       --warn:#92400e;
       --err:#7f1d1d;
     }
 
     *{ box-sizing:border-box; }
-    body{
-      margin:0;
-      font-family: Arial, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-    }
-
-    .container{
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 18px;
-    }
+    body{ margin:0; font-family: Arial, sans-serif; background: var(--bg); color: var(--text); }
+    .container{ max-width: 1100px; margin: 0 auto; padding: 18px; }
 
     .top-header{
       background: linear-gradient(135deg, var(--primary), #374151);
-      color: white;
-      padding: 18px;
-      border-radius: 16px;
-      margin-bottom: 18px;
-      box-shadow: var(--shadow);
+      color: white; padding: 18px; border-radius: 16px; margin-bottom: 18px; box-shadow: var(--shadow);
     }
-
-    .brand{
-      display:flex;
-      align-items:center;
-      gap:14px;
-    }
-
+    .brand{ display:flex; align-items:center; gap:14px; }
     .logo{
-      width:60px;
-      height:60px;
-      object-fit:contain;
-      background:white;
-      border-radius:12px;
-      padding:6px;
-      border: 1px solid rgba(255,255,255,.35);
+      width:60px; height:60px; object-fit:contain; background:white; border-radius:12px;
+      padding:6px; border: 1px solid rgba(255,255,255,.35);
     }
-
-    .top-header h1{
-      margin:0;
-      font-size: clamp(18px, 3vw, 26px);
-      line-height:1.2;
-      color:white;
-    }
-
-    .top-header .subtitle{
-      margin:4px 0 0 0;
-      font-size:13px;
-      color:#e5e7eb;
-    }
+    .top-header h1{ margin:0; font-size: clamp(18px, 3vw, 26px); line-height:1.2; color:white; }
+    .top-header .subtitle{ margin:4px 0 0 0; font-size:13px; color:#e5e7eb; }
 
     @media (max-width: 600px){
       .brand{ flex-direction:column; text-align:center; }
@@ -88,35 +51,12 @@
       padding: 14px;
       margin-bottom: 16px;
     }
+    .card h2{ margin:0 0 10px 0; color: var(--primary); font-size: 18px; }
+    .card h3{ margin: 14px 0 8px 0; color: var(--primary); font-size: 16px; }
 
-    .card h2{
-      margin:0 0 10px 0;
-      color: var(--primary);
-      font-size: 18px;
-    }
-
-    .card h3{
-      margin: 14px 0 8px 0;
-      color: var(--primary);
-      font-size: 16px;
-    }
-
-    .grid{
-      display:grid;
-      grid-template-columns: repeat(5, minmax(0, 1fr));
-      gap: 10px;
-    }
-
-    .field{
-      display:flex;
-      flex-direction:column;
-      gap:6px;
-    }
-
-    label{
-      font-size: 12px;
-      color: var(--muted);
-    }
+    .grid{ display:grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; }
+    .field{ display:flex; flex-direction:column; gap:6px; }
+    label{ font-size: 12px; color: var(--muted); }
 
     input{
       width:100%;
@@ -128,13 +68,11 @@
       background: #f8fafc;
       color: #111827;
     }
-
     input:focus{
       border-color: #0b5394;
       background: #ffffff;
       box-shadow: 0 0 0 3px rgba(11,83,148,.18);
     }
-
     input[type="number"]{ text-align:center; }
     input[readonly]{ background:#eef2f7; }
 
@@ -148,14 +86,12 @@
       border-radius: 12px;
       background: white;
     }
-
     table{
       width: 100%;
       border-collapse: collapse;
       min-width: 620px;
       background: white;
     }
-
     #tablaIRAS{ min-width: 980px; }
 
     th, td{
@@ -165,13 +101,11 @@
       font-size: 14px;
       white-space: nowrap;
     }
-
     th{
       background: var(--head);
       font-weight: 700;
       color: #0b2f55;
     }
-
     td:first-child, th:first-child{
       text-align:left;
       padding-left: 12px;
@@ -192,7 +126,6 @@
       justify-content:flex-end;
       flex-wrap:wrap;
     }
-
     .btn{
       padding: 10px 14px;
       font-size: 14px;
@@ -206,7 +139,6 @@
       gap:8px;
       user-select:none;
     }
-
     .btn.primary{
       background: linear-gradient(135deg, var(--primary), #475569);
       color: white;
@@ -229,7 +161,7 @@
       margin: 10px 0 0;
     }
 
-    /* ===== MODAL GRANDE ===== */
+    /* ===== MODAL ===== */
     .modal-bg{
       position:fixed;
       inset:0;
@@ -249,10 +181,8 @@
       animation: pop .18s ease-out;
       border: 1px solid rgba(17,24,39,.12);
     }
-    @keyframes pop{
-      from{ transform:scale(.92); opacity:0; }
-      to{ transform:scale(1); opacity:1; }
-    }
+    @keyframes pop{ from{ transform:scale(.92); opacity:0; } to{ transform:scale(1); opacity:1; } }
+
     .modal-head{
       padding:18px 18px 10px;
       display:flex;
@@ -260,11 +190,7 @@
       justify-content:space-between;
       gap:14px;
     }
-    .modal-title{
-      margin:0;
-      font-size:22px;
-      line-height:1.15;
-    }
+    .modal-title{ margin:0; font-size:22px; line-height:1.15; }
     .modal-close{
       border:none;
       background:transparent;
@@ -275,6 +201,7 @@
       color:#111827;
     }
     .modal-close:hover{ background:#f3f4f6; }
+
     .modal-body{
       padding:0 18px 14px;
       font-size:16px;
@@ -322,20 +249,11 @@
       background: linear-gradient(135deg, var(--warn), #b45309);
       color: white;
     }
-
-    .hint{
-      font-size: 12px;
-      color: #6b7280;
-      padding: 0 18px 18px;
-      margin-top:-6px;
-      display:none;
-    }
   </style>
 </head>
 
 <body>
   <div class="container">
-
     <header class="top-header">
       <div class="brand">
         <img src="LOGOPUMA.png" alt="Logo" class="logo" />
@@ -372,7 +290,8 @@
 
         <div class="field">
           <label for="medico">Médico</label>
-          <input type="text" id="medico" placeholder="Nombre y apellido" />
+          <!-- ✅ OBLIGATORIO -->
+          <input type="text" id="medico" placeholder="Nombre y apellido" required />
         </div>
       </div>
     </section>
@@ -433,98 +352,72 @@
             <th>DEF. EXTRAHOSPITALARIAS</th>
           </tr>
 
-          <tr class="fila-full">
-            <td>&lt;02 m.</td>
+          <tr class="fila-full"><td>&lt;02 m.</td>
             <td><input type="number" min="0" inputmode="numeric"></td>
             <td><input type="number" min="0" inputmode="numeric"></td>
             <td><input type="number" min="0" inputmode="numeric"></td>
             <td><input type="number" min="0" inputmode="numeric"></td>
             <td><input type="number" min="0" inputmode="numeric"></td>
-            <td><input type="number" min="0" inputmode="numeric"></td>
-            <td></td>
+            <td><input type="number" min="0" inputmode="numeric"></td><td></td>
           </tr>
 
-          <tr class="fila-full">
-            <td>02–11 m.</td>
+          <tr class="fila-full"><td>02–11 m.</td>
             <td><input type="number" min="0" inputmode="numeric"></td>
             <td><input type="number" min="0" inputmode="numeric"></td>
             <td><input type="number" min="0" inputmode="numeric"></td>
             <td><input type="number" min="0" inputmode="numeric"></td>
             <td><input type="number" min="0" inputmode="numeric"></td>
-            <td><input type="number" min="0" inputmode="numeric"></td>
-            <td></td>
+            <td><input type="number" min="0" inputmode="numeric"></td><td></td>
           </tr>
 
-          <tr class="fila-full">
-            <td>01–04 a</td>
+          <tr class="fila-full"><td>01–04 a</td>
             <td><input type="number" min="0" inputmode="numeric"></td>
             <td><input type="number" min="0" inputmode="numeric"></td>
             <td><input type="number" min="0" inputmode="numeric"></td>
             <td><input type="number" min="0" inputmode="numeric"></td>
             <td><input type="number" min="0" inputmode="numeric"></td>
-            <td><input type="number" min="0" inputmode="numeric"></td>
-            <td></td>
+            <td><input type="number" min="0" inputmode="numeric"></td><td></td>
           </tr>
 
-          <tr class="fila-full">
-            <td>05–09 años</td>
+          <tr class="fila-full"><td>05–09 años</td>
             <td><input type="number" min="0" inputmode="numeric"></td>
             <td><input type="number" min="0" inputmode="numeric"></td>
             <td><input type="number" min="0" inputmode="numeric"></td>
             <td><input type="number" min="0" inputmode="numeric"></td>
             <td><input type="number" min="0" inputmode="numeric"></td>
-            <td><input type="number" min="0" inputmode="numeric"></td>
-            <td></td>
+            <td><input type="number" min="0" inputmode="numeric"></td><td></td>
           </tr>
 
-          <tr class="fila-full">
-            <td>10–19 años</td>
+          <tr class="fila-full"><td>10–19 años</td>
             <td><input type="number" min="0" inputmode="numeric"></td>
             <td><input type="number" min="0" inputmode="numeric"></td>
             <td><input type="number" min="0" inputmode="numeric"></td>
             <td><input type="number" min="0" inputmode="numeric"></td>
             <td><input type="number" min="0" inputmode="numeric"></td>
-            <td><input type="number" min="0" inputmode="numeric"></td>
-            <td></td>
+            <td><input type="number" min="0" inputmode="numeric"></td><td></td>
           </tr>
 
-          <tr class="fila-full">
-            <td>20–59 años</td>
+          <tr class="fila-full"><td>20–59 años</td>
             <td><input type="number" min="0" inputmode="numeric"></td>
             <td><input type="number" min="0" inputmode="numeric"></td>
             <td><input type="number" min="0" inputmode="numeric"></td>
             <td><input type="number" min="0" inputmode="numeric"></td>
             <td><input type="number" min="0" inputmode="numeric"></td>
-            <td><input type="number" min="0" inputmode="numeric"></td>
-            <td></td>
+            <td><input type="number" min="0" inputmode="numeric"></td><td></td>
           </tr>
 
-          <tr class="fila-full">
-            <td>60 años a más</td>
+          <tr class="fila-full"><td>60 años a más</td>
             <td><input type="number" min="0" inputmode="numeric"></td>
             <td><input type="number" min="0" inputmode="numeric"></td>
             <td><input type="number" min="0" inputmode="numeric"></td>
             <td><input type="number" min="0" inputmode="numeric"></td>
             <td><input type="number" min="0" inputmode="numeric"></td>
-            <td><input type="number" min="0" inputmode="numeric"></td>
-            <td></td>
+            <td><input type="number" min="0" inputmode="numeric"></td><td></td>
           </tr>
 
-          <tr class="fila-sob">
-            <td>&lt;02 a</td>
-            <td colspan="6"></td>
-            <td><input type="number" min="0" inputmode="numeric"></td>
-          </tr>
-          <tr class="fila-sob">
-            <td>02–04 a.</td>
-            <td colspan="6"></td>
-            <td><input type="number" min="0" inputmode="numeric"></td>
-          </tr>
-          <tr class="fila-sob">
-            <td>05 años a más</td>
-            <td colspan="6"></td>
-            <td><input type="number" min="0" inputmode="numeric"></td>
-          </tr>
+          <tr class="fila-sob"><td>&lt;02 a</td><td colspan="6"></td><td><input type="number" min="0" inputmode="numeric"></td></tr>
+          <tr class="fila-sob"><td>02–04 a.</td><td colspan="6"></td><td><input type="number" min="0" inputmode="numeric"></td></tr>
+          <tr class="fila-sob"><td>05 años a más</td><td colspan="6"></td><td><input type="number" min="0" inputmode="numeric"></td></tr>
         </table>
       </div>
 
@@ -569,39 +462,39 @@
         <button class="modal-close" onclick="hideModal()" aria-label="Cerrar">✕</button>
       </div>
 
-      <div id="modalMsg" class="modal-body">Texto</div>
-      <div class="hint" id="modalHint">Si el problema continúa, comuníquese con el administrador.</div>
+      <div id="modalMsg" class="modal-body"></div>
 
       <div class="modal-footer">
-        <button id="btnAdmin" class="modal-btn warn" onclick="contactarAdmin()" style="display:none;">
-          📞 Comunicar con el Administrador
+        <!-- ✅ SOLO PARA "VOLVER A REGISTRAR" -->
+        <button id="btnAceptar" class="modal-btn warn" onclick="aceptarReintento()" style="display:none;">
+          ✅ Aceptar
         </button>
+        <button id="btnCancelar" class="modal-btn secondary" onclick="cancelarReintento()" style="display:none;">
+          ❌ Cancelar
+        </button>
+
         <button class="modal-btn secondary" onclick="hideModal()">Cerrar</button>
       </div>
     </div>
   </div>
 
   <script>
-    // =========================================================
-    // ✅ API_URL NUEVO
-    // =========================================================
-    const API_URL="https://script.google.com/macros/s/AKfycbxDdc8pRGZD65QlfQ9TGzndANaFxzUlrpleMaqekqfexyZrTh2NmZUr8qvYLSj2eSdR/exec";
-
-    const ADMIN_PHONE_E164 = "51999999999"; // ej: 51987654321
-    const ADMIN_EMAIL = "admin@correo.com";
+    // ✅ TU WEB APP (exec)
+    const API_URL="https://script.google.com/macros/s/AKfycbxl05bBkZs0Gz6fP5l2omoULoMGzsKOZLQ1ms8SKZC-K6YKR7ljtTNGxE-NFwHv-k9Q/exec";
 
     let modalTimer = null;
-    let lastDuplicateContext = null;
+    let lastRetry = null;
 
-    function showModal(type, title, msg, ms=3200, showAdmin=false){
+    function showModal(type, title, msg, ms=2000){
       const bg = document.getElementById("modalBG");
       const box = document.getElementById("modalBox");
 
       document.getElementById("modalTitle").textContent = title;
-      document.getElementById("modalMsg").textContent = msg;
+      document.getElementById("modalMsg").textContent = msg || "";
 
-      document.getElementById("btnAdmin").style.display = showAdmin ? "inline-flex" : "none";
-      document.getElementById("modalHint").style.display = showAdmin ? "block" : "none";
+      // ocultar aceptar/cancelar por defecto
+      document.getElementById("btnAceptar").style.display = "none";
+      document.getElementById("btnCancelar").style.display = "none";
 
       box.className = "modal " + type;
       bg.style.display = "flex";
@@ -610,8 +503,38 @@
       modalTimer = setTimeout(()=> hideModal(), ms);
     }
 
+    function showConfirmRetry(msg){
+      const bg = document.getElementById("modalBG");
+      const box = document.getElementById("modalBox");
+
+      document.getElementById("modalTitle").textContent = "⚠️ Ya existe este registro";
+      document.getElementById("modalMsg").textContent =
+        (msg || "Ya existe un registro con la misma Fecha y Médico.\n\n¿Desea volver a registrar?");
+
+      document.getElementById("btnAceptar").style.display = "inline-flex";
+      document.getElementById("btnCancelar").style.display = "inline-flex";
+
+      box.className = "modal warn";
+      bg.style.display = "flex";
+
+      if (modalTimer) clearTimeout(modalTimer); // sin autocierre
+    }
+
     function hideModal(){
       document.getElementById("modalBG").style.display = "none";
+    }
+
+    function aceptarReintento(){
+      hideModal();
+      if(lastRetry){
+        enviar(lastRetry.tipo, lastRetry.registros, true);
+        lastRetry = null;
+      }
+    }
+
+    function cancelarReintento(){
+      lastRetry = null;
+      hideModal();
     }
 
     document.addEventListener("click", (e)=>{
@@ -622,39 +545,6 @@
     document.addEventListener("keydown", (e)=>{
       if(e.key === "Escape") hideModal();
     });
-
-    function contactarAdmin(){
-      const fecha = document.getElementById("fecha").value || "(sin fecha)";
-      const semana = document.getElementById("semana").value || "(sin SE)";
-      const medico = document.getElementById("medico").value || "(sin médico)";
-      const tipo = (lastDuplicateContext && lastDuplicateContext.tipo) ? lastDuplicateContext.tipo : "(sin tipo)";
-
-      const mensaje =
-`ALERTA: Registro DUPLICADO detectado.
-Tipo: ${tipo}
-Fecha: ${fecha}
-SE: ${semana}
-Médico: ${medico}
-
-Por favor, revisar posible duplicidad en el sistema.`;
-
-      if (ADMIN_PHONE_E164 && ADMIN_PHONE_E164 !== "51999999999") {
-        const url = "https://wa.me/" + encodeURIComponent(ADMIN_PHONE_E164) + "?text=" + encodeURIComponent(mensaje);
-        window.open(url, "_blank");
-        return;
-      }
-
-      if (ADMIN_EMAIL && ADMIN_EMAIL !== "admin@correo.com") {
-        const subject = "ALERTA: Registro duplicado";
-        const mailto = "mailto:" + encodeURIComponent(ADMIN_EMAIL) +
-          "?subject=" + encodeURIComponent(subject) +
-          "&body=" + encodeURIComponent(mensaje);
-        window.location.href = mailto;
-        return;
-      }
-
-      showModal("error","❌ ADMIN NO CONFIGURADO","Configure ADMIN_PHONE_E164 o ADMIN_EMAIL en el código.", 4500, false);
-    }
 
     // ===== SEMANA EPIDEMIOLÓGICA =====
     function firstMondayOfYear(year){
@@ -726,7 +616,6 @@ Por favor, revisar posible duplicidad en el sistema.`;
 
     document.addEventListener("DOMContentLoaded", () => {
       const fechaInput = document.getElementById("fecha");
-
       if (!fechaInput.value) {
         const hoy = new Date();
         const yyyy = hoy.getFullYear();
@@ -734,15 +623,20 @@ Por favor, revisar posible duplicidad en el sistema.`;
         const dd = String(hoy.getDate()).padStart(2, "0");
         fechaInput.value = `${yyyy}-${mm}-${dd}`;
       }
-
       actualizarSemanaEpi();
       fechaInput.addEventListener("change", actualizarSemanaEpi);
     });
 
+    // ✅ MÉDICO OBLIGATORIO + MENSAJE "Registre el médico"
     function base(){
-      const fecha = document.getElementById("fecha").value;
+      const fecha  = document.getElementById("fecha").value;
       const semana = document.getElementById("semana").value;
-      const medico = document.getElementById("medico").value;
+      const medico = document.getElementById("medico").value.trim();
+
+      if(!medico){
+        showModal("warn","⚠️ Falta médico","Registre el médico.", 2300);
+        return null;
+      }
       return [fecha, semana, medico];
     }
 
@@ -751,62 +645,44 @@ Por favor, revisar posible duplicidad en el sistema.`;
       return v === "" ? 0 : Number(v);
     }
 
-    // ✅ ENVÍO ROBUSTO
-    function enviar(tipo, registros){
+    // ✅ ENVÍA A APPS SCRIPT
+    // - si existe -> muestra confirmación "volver a registrar" (Aceptar/Cancelar)
+    // - si guarda -> "Se guardó correctamente"
+    function enviar(tipo, registros, force=false){
       fetch(API_URL, {
         method:"POST",
-        body: JSON.stringify({ tipo, registros }),
+        body: JSON.stringify({ tipo, registros, force }),
         headers: { "Content-Type": "text/plain;charset=utf-8" }
       })
       .then(async (r) => {
         const text = await r.text();
-        let res = null;
-
-        try { res = JSON.parse(text); }
-        catch {
-          showModal("error","❌ RESPUESTA NO VÁLIDA",
-            "El servidor no devolvió JSON.\n\nRespuesta:\n" + text,
-            12000,
-            true
-          );
-          return null;
-        }
-
-        return res;
+        try { return JSON.parse(text); }
+        catch { return {status:"error", message:text || "Respuesta inválida"}; }
       })
       .then((res) => {
-        if (!res) return;
-
-        if (res.status === "duplicate") {
-          lastDuplicateContext = { tipo };
-          showModal("warn","⚠️ REGISTRO DUPLICADO", res.message || "Duplicado detectado.", 9000, true);
+        if(res.status === "duplicate"){
+          lastRetry = { tipo, registros };
+          showConfirmRetry(res.message);
           return;
         }
-
-        if (res.status === "ok") {
-          showModal("success","✅ REGISTRO GUARDADO", `${tipo} se guardó correctamente.`, 2800, false);
+        if(res.status === "ok" || res.status === "updated"){
+          showModal("success","✅ Se guardó correctamente","", 1600);
           return;
         }
-
-        showModal("error","❌ ERROR", res.message || "Error al guardar.", 6500, true);
+        showModal("error","❌ Error", res.message || "Error al guardar.", 3000);
       })
-      .catch((err) => {
-        showModal("error","❌ FALLÓ CONEXIÓN",
-          "No se pudo conectar con el servidor.\n\nDetalle:\n" + (err?.message || err),
-          9000,
-          true
-        );
-      });
+      .catch(() => showModal("error","❌ Error","Falló conexión.", 3000));
     }
 
     function guardarEDAS(){
+      const b = base(); if(!b) return;
       let registros=[];
       document.querySelectorAll(".tablaEDAS").forEach(tabla=>{
         const titulo = tabla.getAttribute("aria-label") || "EDAS";
         tabla.querySelectorAll("tr:not(:first-child)").forEach(tr=>{
           const t = tr.querySelectorAll("td");
           registros.push([
-            ...base(),
+            ...b,
             titulo,
             t[0].innerText,
             val(t[1].querySelector("input")),
@@ -819,12 +695,13 @@ Por favor, revisar posible duplicidad en el sistema.`;
     }
 
     function guardarIRAS(){
+      const b = base(); if(!b) return;
       let registros = [];
 
       document.querySelectorAll("#tablaIRAS tr.fila-full").forEach(tr=>{
         const t = tr.querySelectorAll("td");
         registros.push([
-          ...base(),
+          ...b,
           "NEUMONIAS",
           t[0].innerText.trim(),
           val(t[1].querySelector("input")),
@@ -840,7 +717,7 @@ Por favor, revisar posible duplicidad en el sistema.`;
       document.querySelectorAll("#tablaIRAS tr.fila-sob").forEach(tr=>{
         const t = tr.querySelectorAll("td");
         registros.push([
-          ...base(),
+          ...b,
           "SOB/ASMA",
           t[0].innerText.trim(),
           0,0,0,0,0,0,
@@ -852,11 +729,12 @@ Por favor, revisar posible duplicidad en el sistema.`;
     }
 
     function guardarFebriles(){
+      const b = base(); if(!b) return;
       let registros=[];
       document.querySelectorAll("#tablaFebriles tr:not(:first-child)").forEach(tr=>{
         const t = tr.querySelectorAll("td");
         registros.push([
-          ...base(),
+          ...b,
           t[0].innerText,
           val(t[1].querySelector("input"))
         ]);
