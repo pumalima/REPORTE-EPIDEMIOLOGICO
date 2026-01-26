@@ -352,9 +352,10 @@
             <th>DEF. EXTRAHOSPITALARIAS</th>
           </tr>
 
+          <!-- ✅ CAMBIO: en <02 m. se quitó SOLO el input de "NEUM. NO GRAVE" -->
           <tr class="fila-full"><td>&lt;02 m.</td>
             <td><input type="number" min="0" inputmode="numeric"></td>
-            <td><input type="number" min="0" inputmode="numeric"></td>
+            <td><!-- SIN INPUT: NEUM. NO GRAVE --></td>
             <td><input type="number" min="0" inputmode="numeric"></td>
             <td><input type="number" min="0" inputmode="numeric"></td>
             <td><input type="number" min="0" inputmode="numeric"></td>
@@ -705,7 +706,7 @@
           "NEUMONIAS",
           t[0].innerText.trim(),
           val(t[1].querySelector("input")),
-          val(t[2].querySelector("input")),
+          val(t[2].querySelector("input")), // ✅ en <02 m. no hay input => val(null)=0
           val(t[3].querySelector("input")),
           val(t[4].querySelector("input")),
           val(t[5].querySelector("input")),
