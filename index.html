@@ -16,18 +16,27 @@
       --border:#d1d5db;
       --head:#e5edf7;
       --radius:14px;
-      --shadow:0 8px 22px rgba(0,0,0,.08);
+      --shadow:0 10px 28px rgba(15,23,42,.12);
       --ok:#065f46;
       --warn:#92400e;
       --err:#7f1d1d;
     }
 
     *{ box-sizing:border-box; }
-    body{ margin:0; font-family: Arial, sans-serif; background: var(--bg); color: var(--text); }
-    .container{ max-width: 1100px; margin: 0 auto; padding: 18px; }
+    body{
+      margin:0;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: linear-gradient(to bottom, #eef2ff, #f8fafc);
+      color: var(--text);
+    }
+    .container{
+      max-width: 1500px;
+      margin: 0 auto;
+      padding: 30px;
+    }
 
     .top-header{
-      background: linear-gradient(135deg, var(--primary), #374151);
+      background: linear-gradient(135deg, #0f172a, #1e3a8a);
       color: white; padding: 18px; border-radius: 16px; margin-bottom: 18px; box-shadow: var(--shadow);
     }
     .brand{ display:flex; align-items:center; gap:14px; }
@@ -44,27 +53,45 @@
     }
 
     .card{
-      background: var(--card);
+      background: linear-gradient(to bottom, #ffffff, #f8fafc);
       border: 1px solid var(--border);
-      border-radius: var(--radius);
+      border-radius: 18px;
       box-shadow: var(--shadow);
       padding: 14px;
       margin-bottom: 16px;
     }
-    .card h2{ margin:0 0 10px 0; color: var(--primary); font-size: 18px; }
-    .card h3{ margin: 14px 0 8px 0; color: var(--primary); font-size: 16px; }
+    .card h2{
+      margin:0 0 18px 0;
+      color: #0f172a;
+      font-size: 24px;
+      border-left: 6px solid #2563eb;
+      padding-left: 12px;
+      font-weight:700;
+    }
+    .card h3{
+      margin: 24px 0 12px 0;
+      color:#1e3a8a;
+      font-size:18px;
+      font-weight:700;
+    }
 
-    .grid{ display:grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; }
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 18px;
+      align-items:end;
+    }
     .field{ display:flex; flex-direction:column; gap:6px; }
     label{ font-size: 12px; color: var(--muted); }
 
     input{
+      transition: all .2s ease;
       width:100%;
       padding: 10px 10px;
       border: 1.5px solid #9ca3af;
       border-radius: 10px;
       outline:none;
-      font-size: 14px;
+      font-size: 15px;
       background: #f8fafc;
       color: #111827;
     }
@@ -82,27 +109,32 @@
 
     .table-wrap{
       overflow-x:auto;
+      box-shadow: inset 0 0 0 1px rgba(148,163,184,.15);
       border: 1px solid var(--border);
       border-radius: 12px;
       background: white;
     }
     table{
+      border-radius:14px;
+      overflow:hidden;
       width: 100%;
       border-collapse: collapse;
       min-width: 620px;
       background: white;
     }
-    #tablaIRAS{ min-width: 980px; }
+    #tablaIRAS{ min-width: 1200px; max-width: 1350px; margin:auto; }
 
     th, td{
+      vertical-align:middle;
       border-bottom: 1px solid var(--border);
-      padding: 10px 8px;
+      padding: 16px 14px;
       text-align:center;
       font-size: 14px;
       white-space: nowrap;
     }
     th{
-      background: var(--head);
+      letter-spacing:.3px;
+      background: linear-gradient(to bottom, #dbeafe, #e2e8f0);
       font-weight: 700;
       color: #0b2f55;
     }
@@ -113,13 +145,18 @@
     }
 
     table td input{
+      transition: all .2s ease;
       background: #eef2f7;
       border: 1.5px solid #94a3b8;
-      padding: 8px 8px;
+      padding: 10px 10px;
       border-radius: 10px;
+      width: 85px;
+      font-size: 15px;
     }
 
     .actions{
+      border-top:1px solid #e5e7eb;
+      padding-top:18px;
       display:flex;
       gap:10px;
       margin-top: 12px;
@@ -140,18 +177,23 @@
       user-select:none;
     }
     .btn.primary{
-      background: linear-gradient(135deg, var(--primary), #475569);
+      background: linear-gradient(135deg, #1d4ed8, #0f172a);
       color: white;
     }
     .btn.primary:hover{
-      background: linear-gradient(135deg, var(--primary2), #374151);
+      transform: translateY(-1px);
+      background: linear-gradient(135deg, #1e40af, #111827);
     }
 
     @media (max-width: 780px){
-      .actions{ justify-content: stretch; }
+      .actions{
+      border-top:1px solid #e5e7eb;
+      padding-top:18px; justify-content: stretch; }
       .btn{ width:100%; }
-      table{ min-width: 560px; }
-      #tablaIRAS{ min-width: 980px; }
+      table{
+      border-radius:14px;
+      overflow:hidden; min-width: 560px; }
+      #tablaIRAS{ min-width: 1200px; max-width: 1350px; margin:auto; }
     }
 
     .footnote{
@@ -249,7 +291,17 @@
       background: linear-gradient(135deg, var(--warn), #b45309);
       color: white;
     }
-  </style>
+  
+.card{border-radius:28px !important;padding:24px !important;}
+.card h2{font-size:30px !important;font-weight:800 !important;border-left:8px solid #2563eb !important;padding-left:15px !important;}
+.top-header{border-radius:30px !important;}
+.logo{width:80px !important;height:80px !important;border-radius:20px !important;}
+th{background:linear-gradient(135deg,#1e3a8a,#2563eb) !important;color:white !important;}
+table td input{font-size:24px !important;font-weight:800 !important;height:55px !important;width:95px !important;}
+tr:hover{background:#eff6ff !important;}
+.btn.primary{background:linear-gradient(135deg,#2563eb,#0f172a) !important;}
+
+</style>
 </head>
 
 <body>
@@ -258,8 +310,8 @@
       <div class="brand">
         <img src="LOGOPUMA.png" alt="Logo" class="logo" />
         <div>
-          <h1>📋 Registro Diario EDAS – IRAS – Febriles</h1>
-          <p class="subtitle">Sistema de vigilancia epidemiológica</p>
+          <h1>📊 Sistema Integrado de Vigilancia Epidemiológica</h1>
+          <p class="subtitle">Registro Diario de EDAS, IRAS y Febriles</p>
         </div>
       </div>
     </header>
@@ -296,7 +348,7 @@
       </div>
     </section>
 
-    <!-- ===== EDAS ===== -->
+    <div style="height:10px"></div><!-- ===== EDAS ===== -->
     <section class="card">
       <h2>EDAS</h2>
 
@@ -333,7 +385,7 @@
       </div>
     </section>
 
-    <!-- ===== IRAS ===== -->
+    <div style="height:10px"></div><!-- ===== IRAS ===== -->
     <section class="card">
       <h2>IRAS</h2>
       <div class="table-wrap">
@@ -427,7 +479,7 @@
       </div>
     </section>
 
-    <!-- ===== FEBRILES ===== -->
+    <div style="height:10px"></div><!-- ===== FEBRILES ===== -->
     <section class="card">
       <h2>Febriles</h2>
       <div class="table-wrap">
@@ -451,7 +503,7 @@
       </div>
     </section>
 
-    <p class="footnote">© Registro EDAS – IRAS – Febriles PumaLimaTecnology 2026 |</p>
+    <p class="footnote">© 2026 PumaLimaTecnology | Plataforma Profesional de Vigilancia Epidemiológica</p>
   </div>
 
   <!-- ===== MODAL ===== -->
